@@ -1,0 +1,35 @@
+Summary:	Tools to manipulate elf files
+Name:		mklibs
+Version:	0.1
+Release:	1
+License:	GPL
+Group:		Development/Tools
+Group(de):	Entwicklung/Werkzeuge
+Group(fr):	Development/Outils
+Group(pl):	Programowanie/Narzêdzia
+Source0:	ftp://ftp.pwr.wroc.pl/pub/linux/debian/dists/potato/main/source/admin/boot-floppies_2.2.17.tar.gz
+Requires:	binutils
+BuildArch:	noarch
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%description
+Marcus Brinkmann's magic script from Debian boot-floppies package.
+This utilitiy helps to reduce the necessary libraries to only include
+the symbols needed to run a given set of executables.  
+Run mklibs --help to get some info. 
+For details refer to /usr/bin/mklibs file itself.
+
+%prep
+%setup -q -n boot-floppies-2.2.17
+
+%install
+rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_bindir}
+install scripts/rootdisk/mklibs.sh $RPM_BUILD_ROOT%{_bindir}/mklibs
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%files
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/*
