@@ -6,6 +6,7 @@ Release:	2
 License:	GPL
 Group:		Development/Tools
 Source0:	ftp://ftp.pwr.wroc.pl/pub/linux/debian/dists/potato/main/source/admin/boot-floppies_2.2.17.tar.gz
+# Source0-md5:	89e3ff165d8748d0f717195a5b4ce082
 Patch0:		%{name}-pld.patch
 Requires:	binutils
 Requires:	glibc-pic >= 2.2
