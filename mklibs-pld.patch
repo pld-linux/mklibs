@@ -1,0 +1,58 @@
+diff -Nur --exclude *~ boot-floppies-2.2.17/scripts/rootdisk/mklibs.sh boot-floppies-2.2.17.new/scripts/rootdisk/mklibs.sh
+--- boot-floppies-2.2.17/scripts/rootdisk/mklibs.sh	Wed Jun 14 22:45:46 2000
++++ boot-floppies-2.2.17.new/scripts/rootdisk/mklibs.sh	Sun Apr  8 16:19:08 2001
+@@ -517,15 +517,15 @@
+   fi
+   if [ "x$1" = "xlibc-2.0.7.so" ] ; then
+     # Order does matter! First init, then lib, then fini!
+-    echo `find-files $src_path libc_pic/soinit.so libc_pic.a libc_pic/sofini.so`
++    echo `find-files $src_path soinit.o libc_pic.a sofini.o`
+     return 0
+   fi
+-  if [ "x$1" = "xlibc-2.1.2.so" -o "x$1" = "xlibc-2.1.3.so" ] ; then
++  if [ "x$1" = "xlibc-2.2.so" -o "x$1" = "xlibc-2.1.3.so" ] ; then
+     # Order does matter! First init, then lib, then fini!
+-    echo `find-files $src_path libc_pic/soinit.o libc_pic.a libc_pic/sofini.o libc_pic/interp.o`
++    echo `find-files $src_path soinit.o libc_pic.a sofini.o interp.o`
+     return 0
+   fi
+-  if [ "x$1" = "xlibm-2.1.2.so" -o "x$1" = "xlibm-2.1.3.so" ] ; then
++  if [ "x$1" = "xlibm-2.2.so" -o "x$1" = "xlibm-2.1.3.so" ] ; then
+     echo `find-file "$src_path" libm_pic.a`
+     return 0
+   fi
+@@ -547,16 +547,16 @@
+     echo `find-file $src_path ld-2.0.7.so` -lgcc 
+     return 0
+   fi
+-  if [ "x$1" = "xlibc-2.1.2.so" ] ; then
+-    echo "`find-file $src_path ld-2.1.2.so` -lgcc -Wl,--version-script=`find-file $src_path libc_pic.map`"
++  if [ "x$1" = "xlibc-2.2.so" ] ; then
++    echo "`find-file $src_path ld-2.2.so` -lgcc -Wl,--version-script=`find-file $src_path libc.map`"
+     return 0
+   fi
+-  if [ "x$1" = "xlibm-2.1.2.so" -o "x$1" = "xlibm-2.1.3.so" ] ; then
+-    echo "-Wl,--version-script=`find-file $src_path libm_pic.map`"
++  if [ "x$1" = "xlibm-2.2.so" -o "x$1" = "xlibm-2.1.3.so" ] ; then
++    echo "-Wl,--version-script=`find-file $src_path libm.map`"
+     return 0
+   fi
+   if [ "x$1" = "xlibc-2.1.3.so" ] ; then
+-    echo "`find-file $src_path ld-2.1.3.so` -lgcc -Wl,--version-script=`find-file $src_path libc_pic.map`"
++    echo "`find-file $src_path ld-2.1.3.so` -lgcc -Wl,--version-script=`find-file $src_path libc.map`"
+     return 0
+   fi
+   return 0
+@@ -763,10 +763,10 @@
+ 
+ # Temporary directory. Here is a race condititon to fix!
+ 
+-fl_dir="/tmp/,mklibs.$$"
++fl_dir="${TMPDIR-/tmp}/mklibs-tempdir.$$"
+ mkdir $fl_dir
+ 
+-trap "rm -fr $fl_dir" EXIT
++#trap "rm -fr $fl_dir" EXIT
+ 
+ # Intialize our symbol array and library queue with the information
+ # from the executables.
