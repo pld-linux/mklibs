@@ -17,9 +17,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Marcus Brinkmann's magic script from Debian boot-floppies package.
 This utilitiy helps to reduce the necessary libraries to only include
-the symbols needed to run a given set of executables.  
-Run mklibs --help to get some info. 
-For details refer to /usr/bin/mklibs file itself.
+the symbols needed to run a given set of executables. Run mklibs
+--help to get some info. For details refer to /usr/bin/mklibs file
+itself.
 
 %prep
 %setup -q -n boot-floppies-2.2.17
@@ -28,6 +28,7 @@ For details refer to /usr/bin/mklibs file itself.
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_bindir}
+
 install scripts/rootdisk/mklibs.sh $RPM_BUILD_ROOT%{_bindir}/mklibs
 ##|sed 's/libc-2.1.2/libc-2.2/g; s/libm-2.1.2/libm-2.2/g; s/ld-2.1.2/ld-2.2/g' \
 
