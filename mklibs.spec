@@ -5,9 +5,6 @@ Version:	0.1
 Release:	2
 License:	GPL
 Group:		Development/Tools
-Group(de):	Entwicklung/Werkzeuge
-Group(fr):	Development/Outils
-Group(pl):	Programowanie/Narzêdzia
 Source0:	ftp://ftp.pwr.wroc.pl/pub/linux/debian/dists/potato/main/source/admin/boot-floppies_2.2.17.tar.gz
 Patch0:		%{name}-pld.patch
 Requires:	binutils
