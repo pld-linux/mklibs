@@ -1,7 +1,8 @@
 Summary:	Tools to manipulate elf files
+Summary(pl):	Narzêdzia do modyfikowania plików ELF
 Name:		mklibs
 Version:	0.1
-Release:	1
+Release:	2
 License:	GPL
 Group:		Development/Tools
 Group(de):	Entwicklung/Werkzeuge
@@ -20,6 +21,13 @@ This utilitiy helps to reduce the necessary libraries to only include
 the symbols needed to run a given set of executables. Run mklibs
 --help to get some info. For details refer to /usr/bin/mklibs file
 itself.
+
+%description -l pl
+Magiczny skrypt Marcusa Brinkmanna z debianowego pakietu
+boot-floppies. To narzêdzie pomaga zmniejszyæ potrzebne biblioteki
+tak, by zawiera³y jedynie symbole potrzebne dla podanego zbioru
+binarek. Pomoc mo¿na uzyskaæ przez "mklibs --help", szczegó³y w samym
+pliku /usr/bin/mklibs.
 
 %prep
 %setup -q -n boot-floppies-2.2.17
