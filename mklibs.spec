@@ -8,7 +8,9 @@ Group(de):	Entwicklung/Werkzeuge
 Group(fr):	Development/Outils
 Group(pl):	Programowanie/Narzêdzia
 Source0:	ftp://ftp.pwr.wroc.pl/pub/linux/debian/dists/potato/main/source/admin/boot-floppies_2.2.17.tar.gz
+Patch0:		%{name}-pld.patch
 Requires:	binutils
+Requires:	glibc = 2.2
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -21,11 +23,13 @@ For details refer to /usr/bin/mklibs file itself.
 
 %prep
 %setup -q -n boot-floppies-2.2.17
+%patch -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_bindir}
 install scripts/rootdisk/mklibs.sh $RPM_BUILD_ROOT%{_bindir}/mklibs
+##|sed 's/libc-2.1.2/libc-2.2/g; s/libm-2.1.2/libm-2.2/g; s/ld-2.1.2/ld-2.2/g' \
 
 %clean
 rm -rf $RPM_BUILD_ROOT
