@@ -10,7 +10,7 @@ Group(pl):	Programowanie/Narzêdzia
 Source0:	ftp://ftp.pwr.wroc.pl/pub/linux/debian/dists/potato/main/source/admin/boot-floppies_2.2.17.tar.gz
 Patch0:		%{name}-pld.patch
 Requires:	binutils
-Requires:	glibc-pic = 2.2
+Requires:	glibc-pic >= 2.2
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
