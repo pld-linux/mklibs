@@ -29,7 +29,7 @@ pliku /usr/bin/mklibs.
 
 %prep
 %setup -q -n boot-floppies-2.2.17
-%patch -p1
+%patch0 -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT
