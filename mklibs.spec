@@ -1,5 +1,5 @@
 Summary:	Tools to manipulate elf files
-Summary(pl.UTF-8):   Narzędzia do modyfikowania plików ELF
+Summary(pl.UTF-8):	Narzędzia do modyfikowania plików ELF
 Name:		mklibs
 Version:	0.1
 Release:	2
